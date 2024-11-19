@@ -1,9 +1,7 @@
-
-console.log(data);
+console.log("data", data);
 
 //You can start simple and just render a single 
 //pokemon card from the first element
-console.log(data[0]);
 
 //cardcontainer
 const cardContainer = document.createElement("ul");
@@ -41,6 +39,20 @@ data[i].stats.forEach(stats => {
 
 cardListItem.appendChild(statsList);
 cardContainer.appendChild(cardListItem);
+
+//games
+const gametitle = document.createElement("h3");
+gametitle.textContent = ('Games');
+const gameList = document.createElement("ul");
+gameList.classList.add("card--text");
+
+data[i].game_indices.forEach(game => {
+    const gameItem = document.createElement("li");
+    gameItem.textContent = `Pokemon ${game.version.name}`;
+    gameList.appendChild(gameItem);
+});
+cardListItem.appendChild(gametitle);
+cardListItem.appendChild(gameList);
 
 //additional styling for the layout
 const cardWidth = (100 / 3) + '%';
